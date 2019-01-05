@@ -21,4 +21,21 @@ class Parser {
         
         return categoriesArray
     }
+    
+    func parseJoke(response: Any) -> Joke {
+        let JSONresponse = response as! [String : Any]
+//        var categoriesArray = [String]()
+        
+        let iconURL = JSONresponse["icon_url"] as! String
+        let id = JSONresponse["id"] as! String
+        let jokeURL = JSONresponse["url"] as! String
+        let description = JSONresponse["value"] as! String
+        
+        let joke = Joke(id: id,
+                        desc: description,
+                        thumbPath: iconURL,
+                        jokeUrl: jokeURL)
+        
+        return joke
+    }
 }

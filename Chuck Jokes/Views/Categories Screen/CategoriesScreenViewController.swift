@@ -12,10 +12,13 @@ private let reuseIdentifier = "categoryViewCell"
 
 class CategoriesScreenViewController: UITableViewController, RequestDelegate {
 
+    @IBOutlet weak var loadingIndicator: UIActivityIndicatorView!
+    
     let requestMaker = Request()
     var categoriesArray: [String]? {
         didSet{
             self.tableView.reloadData()
+            loadingIndicator.stopAnimating()
         }
     }
     
@@ -23,10 +26,14 @@ class CategoriesScreenViewController: UITableViewController, RequestDelegate {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
+        loadingIndicator.hidesWhenStopped = true
+        loadingIndicator.startAnimating()
+        
         requestMaker.delegate = self
         requestMaker.requestCategories()
     }
 
+    //MARK: Request Delegate
     func didLoadCategories(categories: [String]) {
         self.categoriesArray = categories
     }
@@ -35,6 +42,7 @@ class CategoriesScreenViewController: UITableViewController, RequestDelegate {
         //do nothing for now
     }
     
+    //MARK: Table View Settings
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
@@ -50,6 +58,21 @@ class CategoriesScreenViewController: UITableViewController, RequestDelegate {
         cell.categoryLabel.text = categoriesArray![indexPath.row]
         
         return cell
+    }
+    
+    //MARK: Navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        var selectedCategory = "Random"
+        if(segue.identifier != "randomJokeSegue") {
+            let selectedCell = sender as! CategoriesCell
+            let selectedCellIndexPath = self.tableView.indexPath(for: selectedCell)
+            
+            selectedCategory = categoriesArray![selectedCellIndexPath!.row]
+        }
+        
+        print("Selected Category: \(selectedCategory)")
+        let destinationViewController = segue.destination as! JokeDetailsViewController
+        destinationViewController.category = selectedCategory;
     }
 }
 
