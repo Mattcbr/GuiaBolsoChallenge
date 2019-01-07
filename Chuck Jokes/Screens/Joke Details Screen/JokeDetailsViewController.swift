@@ -16,43 +16,41 @@ class JokeDetailsViewController: UIViewController, RequestDelegate {
     @IBOutlet weak var loadingIndicator: UIActivityIndicatorView!
     @IBOutlet weak var jokeWebPageButton: UIButton!
     
-    let requestMaker = Request()
+    var viewModel: JokeDetailsViewModel?
     var category: String = ""
-    var Joke: Joke? {
-        didSet{
-            jokeDescriptionLabel.text = Joke!.jokeDescription
-            if(!Joke!.hasLoadedImage){
-                requestMaker.requestImage(imageURL: Joke!.thumbnailPath) { (thumbnail) in
-                    self.Joke!.thumbnail = thumbnail
-                    self.jokeImageView.image = thumbnail
-                    self.Joke!.hasLoadedImage = true
-                }
-            }
-            jokeCategoryLabel.isHidden = false
-            jokeWebPageButton.isHidden = false
-            loadingIndicator.stopAnimating()
-        }
-    }
     
     override func viewDidLoad() {
         self.navigationItem.title = "\(category) Joke"
         
+        viewModel = JokeDetailsViewModel.init(viewController: self)
+        viewModel!.requestJokeForCategory(category: self.category)
+        
         loadingIndicator.hidesWhenStopped = true
         loadingIndicator.startAnimating()
         jokeDescriptionLabel.text = "Loading..."
-        jokeCategoryLabel.text = ""
         jokeCategoryLabel.text = "Category: \(category)"
         jokeCategoryLabel.isHidden = true;
         jokeWebPageButton.isHidden = true
-        
-        requestMaker.delegate = self
-        requestMaker.requestJoke(category: category)
     }
     
-    func didLoadJoke(loadedJoke: Joke) {
-        self.Joke = loadedJoke
+    func didLoadJoke() {
+        jokeDescriptionLabel.text = viewModel!.Joke!.jokeDescription
+        jokeImageView.image = viewModel!.Joke!.thumbnail
+        jokeCategoryLabel.isHidden = false
+        jokeWebPageButton.isHidden = false
+        loadingIndicator.stopAnimating()
     }
+    
     @IBAction func didPressJokeWebPageButton(_ sender: Any) {
-        UIApplication.shared.openURL(URL(string: Joke!.jokeUrl)!)
+        viewModel!.openJokeWebPage()
+    }
+    
+    @IBAction func showErrorLoadingJokeAlert(){
+        let alert = UIAlertController(title: "Error", message: "Error retrieving your \(category) joke :/", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: NSLocalizedString("Back", comment: "Default action"), style: .default, handler: { _ in
+            _ = self.navigationController?.popViewController(animated: true)
+        }))
+        
+        self.present(alert, animated: true, completion: nil)
     }
 }

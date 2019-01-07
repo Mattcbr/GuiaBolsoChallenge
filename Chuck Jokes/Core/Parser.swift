@@ -16,15 +16,11 @@ class Parser {
         JSONresponse?.forEach { newCategory in
             categoriesArray.append(newCategory)
         }
-        
-        print(categoriesArray)
-        
         return categoriesArray
     }
     
     func parseJoke(response: Any) -> Joke {
         let JSONresponse = response as! [String : Any]
-//        var categoriesArray = [String]()
         
         let iconURL = JSONresponse["icon_url"] as! String
         let id = JSONresponse["id"] as! String

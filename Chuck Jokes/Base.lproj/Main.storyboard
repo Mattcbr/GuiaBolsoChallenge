@@ -31,13 +31,14 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kzg-ib-96Y">
-                                            <rect key="frame" x="16" y="24.5" width="42" height="21"/>
+                                            <rect key="frame" x="16" y="11.5" width="349" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
                                     <constraints>
+                                        <constraint firstAttribute="trailing" relation="lessThanOrEqual" secondItem="kzg-ib-96Y" secondAttribute="trailing" constant="10" id="06k-E0-3MQ"/>
                                         <constraint firstItem="kzg-ib-96Y" firstAttribute="leading" secondItem="AT0-sH-tNc" secondAttribute="leading" constant="16" id="Tkd-uy-w0D"/>
                                         <constraint firstItem="kzg-ib-96Y" firstAttribute="centerY" secondItem="AT0-sH-tNc" secondAttribute="centerY" id="rKZ-59-HHN"/>
                                     </constraints>

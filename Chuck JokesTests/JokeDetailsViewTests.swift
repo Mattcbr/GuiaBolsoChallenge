@@ -10,32 +10,32 @@ import XCTest
 @testable import Chuck_Jokes
 
 class JokeDetailsViewTests: XCTestCase {
-
+    
     var testDetailsViewController: JokeDetailsViewController!
     
     override func setUp() {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let detailsVC: JokeDetailsViewController = storyboard.instantiateViewController(withIdentifier: "JokeDetailsViewController") as! JokeDetailsViewController
         testDetailsViewController = detailsVC
         _ = testDetailsViewController.view
     }
-
+    
     override func tearDown() {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
+        testDetailsViewController = nil
     }
-
+    
     func testJokeDescription() {
         let testJoke = Joke(id: "test123",
                             desc: "This is not a Joke",
                             thumbPath: "https://assets.chucknorris.host/img/avatar/chuck-norris.png",
                             jokeUrl: "https://api.chucknorris.io")
         
-        testDetailsViewController.didLoadJoke(loadedJoke: testJoke)
+        testJoke.hasLoadedImage = true
+        testDetailsViewController.viewModel?.didLoadJoke(loadedJoke: testJoke)
         
         XCTAssertEqual(testDetailsViewController.jokeDescriptionLabel.text!, testJoke.jokeDescription)
     }
-
+    
     func testJokeCategory() {
         
         let testCategory = "Random"
@@ -46,5 +46,4 @@ class JokeDetailsViewTests: XCTestCase {
         
         XCTAssertEqual(testDetailsViewController.jokeCategoryLabel.text!, fullCategoryText)
     }
-
 }

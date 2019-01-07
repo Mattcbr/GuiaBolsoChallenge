@@ -10,25 +10,24 @@ import XCTest
 @testable import Chuck_Jokes
 
 class JokeCategoriesTests: XCTestCase {
-
+    
     var testCategoriesViewController: CategoriesScreenViewController!
     
     override func setUp() {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let categoriesVC: CategoriesScreenViewController = storyboard.instantiateViewController(withIdentifier: "categoriesDetailsViewController") as! CategoriesScreenViewController
         testCategoriesViewController = categoriesVC
         _ = testCategoriesViewController.view
     }
-
+    
     override func tearDown() {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
+        testCategoriesViewController = nil
     }
-
+    
     func testCategories() {
-
+        
         let testCategoriesArray = ["Pizza", "Fries", "Burger", "Milk Shake", "Ice Cream", "Donut", "Waffle"]
-        testCategoriesViewController.categoriesArray = testCategoriesArray
+        testCategoriesViewController.viewModel!.categoriesArray = testCategoriesArray
         
         let testIndex = Int.random(in: 0 ..< testCategoriesArray.count)
         let testIndexPath = IndexPath(row: testIndex, section: 0)
@@ -36,12 +35,4 @@ class JokeCategoriesTests: XCTestCase {
         
         XCTAssertEqual(cell.categoryLabel.text!, testCategoriesArray[testIndex])
     }
-
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
-        }
-    }
-
 }

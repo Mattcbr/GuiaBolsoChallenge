@@ -32,10 +32,8 @@ class Request {
             case .success(let JSON):
                 let categoriesArray = responseParser.parseCategories(response: JSON)
                 self.delegate?.didLoadCategories!(categories: categoriesArray)
-                print(response)
             case .failure(let error):
                 self.delegate?.didFailToLoadCategories!(withError: error)
-                print(error)
             }
         }
     }
@@ -52,10 +50,8 @@ class Request {
             case .success(let JSON):
                 let parsedJoke = responseParser.parseJoke(response: JSON)
                 self.delegate?.didLoadJoke!(loadedJoke: parsedJoke)
-                print(response)
             case .failure(let error):
-//                self.delegate?.didFailToLoadCategories(withError: error)
-                print(error)
+                self.delegate?.didFailToLoadCategories!(withError: error)
             }
         }
     }
@@ -68,8 +64,5 @@ class Request {
                 completion(returnImage!)
             }
         }
-//        if(returnImage != nil) {
-//            completion(returnImage!)
-//        }
     }
 }

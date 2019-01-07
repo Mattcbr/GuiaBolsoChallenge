@@ -17,8 +17,9 @@
 		2F53EB9421E01C6500B467F8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2F53EB9221E01C6500B467F8 /* Main.storyboard */; };
 		2F53EB9621E01C6600B467F8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2F53EB9521E01C6600B467F8 /* Assets.xcassets */; };
 		2F53EB9921E01C6600B467F8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2F53EB9721E01C6600B467F8 /* LaunchScreen.storyboard */; };
-		2F53EBA421E01C6600B467F8 /* Chuck_JokesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F53EBA321E01C6600B467F8 /* Chuck_JokesTests.swift */; };
 		2F53EBAF21E01C6600B467F8 /* Chuck_JokesUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F53EBAE21E01C6600B467F8 /* Chuck_JokesUITests.swift */; };
+		2FD1C8EE21E3C0B30067145F /* JokeDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD1C8ED21E3C0B30067145F /* JokeDetailsViewModel.swift */; };
+		2FD1C8F021E3CC5C0067145F /* CategoriesScreenViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD1C8EF21E3CC5C0067145F /* CategoriesScreenViewModel.swift */; };
 		2FEB0E7921E13D9C00DF1D9A /* JokeDetailsViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FEB0E7821E13D9C00DF1D9A /* JokeDetailsViewTests.swift */; };
 		2FEB0E7B21E16FF100DF1D9A /* JokeCategoriesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FEB0E7A21E16FF100DF1D9A /* JokeCategoriesTests.swift */; };
 		60013773FE63F2D5628CBBE0 /* Pods_Chuck_Jokes.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1AE051072E26B1F3BFFFB88C /* Pods_Chuck_Jokes.framework */; };
@@ -56,11 +57,12 @@
 		2F53EB9821E01C6600B467F8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2F53EB9A21E01C6600B467F8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2F53EB9F21E01C6600B467F8 /* Chuck JokesTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Chuck JokesTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		2F53EBA321E01C6600B467F8 /* Chuck_JokesTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chuck_JokesTests.swift; sourceTree = "<group>"; };
 		2F53EBA521E01C6600B467F8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2F53EBAA21E01C6600B467F8 /* Chuck JokesUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Chuck JokesUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2F53EBAE21E01C6600B467F8 /* Chuck_JokesUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chuck_JokesUITests.swift; sourceTree = "<group>"; };
 		2F53EBB021E01C6600B467F8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2FD1C8ED21E3C0B30067145F /* JokeDetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JokeDetailsViewModel.swift; sourceTree = "<group>"; };
+		2FD1C8EF21E3CC5C0067145F /* CategoriesScreenViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesScreenViewModel.swift; sourceTree = "<group>"; };
 		2FEB0E7821E13D9C00DF1D9A /* JokeDetailsViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JokeDetailsViewTests.swift; sourceTree = "<group>"; };
 		2FEB0E7A21E16FF100DF1D9A /* JokeCategoriesTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JokeCategoriesTests.swift; sourceTree = "<group>"; };
 		4D042ACD14B60A1F2F711F97 /* Pods-Chuck Jokes.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Chuck Jokes.release.xcconfig"; path = "Pods/Target Support Files/Pods-Chuck Jokes/Pods-Chuck Jokes.release.xcconfig"; sourceTree = "<group>"; };
@@ -106,6 +108,7 @@
 			isa = PBXGroup;
 			children = (
 				2F11E71721E0E39200CF3A43 /* JokeDetailsViewController.swift */,
+				2FD1C8ED21E3C0B30067145F /* JokeDetailsViewModel.swift */,
 			);
 			path = "Joke Details Screen";
 			sourceTree = "<group>";
@@ -118,13 +121,13 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
-		2F4AD5CE21E02A6500F4178A /* Views */ = {
+		2F4AD5CE21E02A6500F4178A /* Screens */ = {
 			isa = PBXGroup;
 			children = (
-				2F11E71621E0E37600CF3A43 /* Joke Details Screen */,
 				2F4AD5CF21E02A6D00F4178A /* Categories Screen */,
+				2F11E71621E0E37600CF3A43 /* Joke Details Screen */,
 			);
-			path = Views;
+			path = Screens;
 			sourceTree = "<group>";
 		};
 		2F4AD5CF21E02A6D00F4178A /* Categories Screen */ = {
@@ -132,6 +135,7 @@
 			children = (
 				2F4AD5D021E02A7C00F4178A /* Cell */,
 				2F53EB9021E01C6400B467F8 /* CategoriesScreenViewController.swift */,
+				2FD1C8EF21E3CC5C0067145F /* CategoriesScreenViewModel.swift */,
 			);
 			path = "Categories Screen";
 			sourceTree = "<group>";
@@ -178,9 +182,9 @@
 		2F53EB8D21E01C6400B467F8 /* Chuck Jokes */ = {
 			isa = PBXGroup;
 			children = (
-				2F11E71921E0E88700CF3A43 /* Models */,
-				2F4AD5CE21E02A6500F4178A /* Views */,
 				2F4BCC3721E01FD8004F2FCD /* Core */,
+				2F11E71921E0E88700CF3A43 /* Models */,
+				2F4AD5CE21E02A6500F4178A /* Screens */,
 				2F53EB8E21E01C6400B467F8 /* AppDelegate.swift */,
 				2F53EB9221E01C6500B467F8 /* Main.storyboard */,
 				2F53EB9521E01C6600B467F8 /* Assets.xcassets */,
@@ -193,10 +197,9 @@
 		2F53EBA221E01C6600B467F8 /* Chuck JokesTests */ = {
 			isa = PBXGroup;
 			children = (
-				2F53EBA321E01C6600B467F8 /* Chuck_JokesTests.swift */,
+				2FEB0E7A21E16FF100DF1D9A /* JokeCategoriesTests.swift */,
 				2FEB0E7821E13D9C00DF1D9A /* JokeDetailsViewTests.swift */,
 				2F53EBA521E01C6600B467F8 /* Info.plist */,
-				2FEB0E7A21E16FF100DF1D9A /* JokeCategoriesTests.swift */,
 			);
 			path = "Chuck JokesTests";
 			sourceTree = "<group>";
@@ -400,6 +403,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2FD1C8EE21E3C0B30067145F /* JokeDetailsViewModel.swift in Sources */,
+				2FD1C8F021E3CC5C0067145F /* CategoriesScreenViewModel.swift in Sources */,
 				2F4AD5D221E02A9B00F4178A /* CategoriesCell.swift in Sources */,
 				2F4AD5CD21E0260C00F4178A /* Parser.swift in Sources */,
 				2F53EB9121E01C6400B467F8 /* CategoriesScreenViewController.swift in Sources */,
@@ -415,7 +420,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				2FEB0E7921E13D9C00DF1D9A /* JokeDetailsViewTests.swift in Sources */,
-				2F53EBA421E01C6600B467F8 /* Chuck_JokesTests.swift in Sources */,
 				2FEB0E7B21E16FF100DF1D9A /* JokeCategoriesTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
