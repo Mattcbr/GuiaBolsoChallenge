@@ -14,7 +14,8 @@ class Parser {
         var categoriesArray = [String]()
         
         JSONresponse?.forEach { newCategory in
-            categoriesArray.append(newCategory)
+            let capitalizedCategory = newCategory.capitalized
+            categoriesArray.append(capitalizedCategory)
         }
         return categoriesArray
     }

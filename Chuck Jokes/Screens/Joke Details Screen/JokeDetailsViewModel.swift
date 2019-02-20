@@ -24,7 +24,11 @@ class JokeDetailsViewModel: RequestDelegate{
     }
     
     func requestJokeForCategory(category: String){
-       requestMaker.requestJoke(category: category)
+        var requestCategory = category
+        if(category != "Random"){
+            requestCategory = category.lowercased()
+        }
+        requestMaker.requestJoke(category: requestCategory)
     }
     
     func didLoadJoke(loadedJoke: Joke) {

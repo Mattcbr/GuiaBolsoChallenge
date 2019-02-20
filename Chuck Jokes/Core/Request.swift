@@ -51,7 +51,7 @@ class Request {
                 let parsedJoke = responseParser.parseJoke(response: JSON)
                 self.delegate?.didLoadJoke!(loadedJoke: parsedJoke)
             case .failure(let error):
-                self.delegate?.didFailToLoadCategories!(withError: error)
+                self.delegate?.didFailToLoadJoke!(withError: error)
             }
         }
     }

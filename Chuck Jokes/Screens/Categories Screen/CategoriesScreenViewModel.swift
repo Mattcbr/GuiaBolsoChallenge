@@ -29,5 +29,6 @@ class CategoriesScreenViewModel: RequestDelegate {
     //MARK: Request Delegate
     func didLoadCategories(categories: [String]) {
         self.categoriesArray = categories
+        self.categoriesArray?.sort{$0 < $1}
     }
 }
